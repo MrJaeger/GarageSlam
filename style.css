@@ -31,7 +31,7 @@ a {
 	color: #0066FF;
 }
 
-#slider a, header h1 a {
+#slider a, header a {
 	color: inherit;
 }
 
@@ -70,6 +70,11 @@ img.profile {
 	max-width: 150px;
 	max-height: 150px;
 	margin: 10px 10px 10px 0px;
+}
+
+img#fbPicture {
+	vertical-align: text-bottom;
+	max-height: 23px;
 }
 
 .project img {
@@ -180,6 +185,6 @@ hr {
 
 header #login {
 	position: absolute;
-	bottom: 0px;
+	bottom: 5px;
 	right: 0px;
 }

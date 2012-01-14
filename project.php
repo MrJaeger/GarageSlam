@@ -1,4 +1,4 @@
-<? require_once($_SERVER['SERVER_NAME'] . "/header.php"); ?>
+<? require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); ?>
 		<script src="http://connect.soundcloud.com/sdk.js" type="text/JavaScript"></script>
 		<script type="text/JavaScript">
 			SC.initialize({
@@ -83,4 +83,4 @@
 				</div><!--/.influence-->
 			</div>
 		</div><!--/.wrapper-->
-<? require_once($_SERVER['SERVER_NAME'] . "/footer.php"); ?>
+<? require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.php"); ?>

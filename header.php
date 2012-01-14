@@ -1,26 +1,3 @@
-<?
-
-session_start();
-if($_SESSION['logged_in']== 1) {
-	header("Location: ".$_SERVER['SERVER_NAME']."/home.php");
-}
-
-require_once("facebook.php");
-
-$facebook = new Facebook(array(
-  'appId'  => '283313805059550',
-  'secret' => '409b470d0d0e0f0478cfda13a4ae4cd3',
-));
-
-$params = array(
-scope => 'user_about_me, user_education_history, user_hometown, user_location, email',
-redirect_uri => "http://".$_SERVER['SERVER_NAME']."/home.php"
-);
-
-$loginUrl = $facebook->getLoginUrl($params);
-
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -41,7 +18,38 @@ $loginUrl = $facebook->getLoginUrl($params);
 		<header>
 			<div class="wrapper">
 				<div id="login">
-					<a href="<?= $loginUrl ?>">Login</a>
+					<div id="fb-root"></div>
+					<script type="text/javascript">
+						window.fbAsyncInit = function() {
+				          FB.init({
+				            appId      : '283313805059550',
+				            status     : true, 
+				            cookie     : true,
+				            xfbml      : true,
+				            oauth      : true,
+				          });
+				          FB.Event.subscribe('auth.login', function () {
+					          window.location = document.URL;
+					      });
+				          FB.getLoginStatus(function(response) {
+  							if (response.status === 'connected') {
+  								$(".fb-login-button").toggle();
+							    $("#fbPicture").attr("src", "https://graph.facebook.com/" + response.authResponse.userID + "/picture");
+  								FB.api("/me", function(user) {
+  									$(".name").html("<a href='/profile.php'>" + user.name + "</a>");
+  								});
+  							}
+  						  });
+				        };
+				        (function(d){
+				           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+				           js = d.createElement('script'); js.id = id; js.async = true;
+				           js.src = "//connect.facebook.net/en_US/all.js";
+				           d.getElementsByTagName('head')[0].appendChild(js);
+				        }(document));
+					</script>
+
+					<img id="fbPicture" /> <span class="name"></span><div class="fb-login-button" data-scope="user_about_me, user_education_history, user_hometown, user_location, email"></div>
 				</div>
 				<h1><a href="/">GarageSlam</a></h1>
 			</div><!--/.wrapper-->
