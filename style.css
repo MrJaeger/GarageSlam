@@ -20,13 +20,19 @@ header {
 	color: #ffffff;
 }
 
-a {
-	text-decoration: none;
-	color: inherit;
+p {
+	text-align: justify;
+	font-size: small;
+	margin: 5px 0px;
 }
 
-header h1 a {
-	color: #ffffff;
+a {
+	text-decoration: none;
+	color: #0066FF;
+}
+
+#slider a, header h1 a {
+	color: inherit;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -82,6 +88,12 @@ img.profile {
 	padding: 0px;
 }
 
+#slider li {
+	width: 900px;
+	height: 300px;
+	text-align: right;
+}
+
 hr {
 	margin: 2px 0px -2px 0px;
 	width: 100px;
@@ -91,6 +103,7 @@ hr {
 }
 
 #slider {
+	margin-bottom: 20px;
 	color: #ffffff;
 	font-size: xx-small;
 }
