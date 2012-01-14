@@ -20,6 +20,7 @@
 				<div id="login">
 					<div id="fb-root"></div>
 					<script type="text/javascript">
+						var currentUser;
 						window.fbAsyncInit = function() {
 				          FB.init({
 				            appId      : '283313805059550',
@@ -47,9 +48,17 @@
   							if (response.status === 'connected') {
   								$(".fb-login-button").toggle();
 							    $("#fbPicture").attr("src", "https://graph.facebook.com/" + response.authResponse.userID + "/picture");
-  								FB.api("/me", function(user) {
-  									$(".name").html("<a href='/profile.php'>" + user.name + "</a>");
-  									$(".location").html(user.location.name);
+  								$.ajax({
+					          		type: "GET",
+					          		url: "/api/getUser.php",
+					          		data: "id=" + response.authResponse.userID,
+				          			async: false,
+				          			dataType: "json",
+				          			success: function(data) {
+				          				currentUser = data;
+						          		$(".name").html("<a href='/profile.php'>" + currentUser.first + " " + currentUser.last + "</a>");
+	  									$(".location").html(currentUser.location);
+  									}
   								});
   							}
   						  });
