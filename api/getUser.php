@@ -4,15 +4,9 @@ $id = $_GET['id'];
 
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
 
-<<<<<<< HEAD
-$user = mysql_fetch_assoc(
-		mysql_query(
-			"select * from `users` where `tid` = '" . $id . "'";
-=======
 $user = mysqli_fetch_assoc(
 		mysqli_query(
 			$mySQLConnection, "select * from `users` where `id` = '" . $id . "'"
->>>>>>> 9c7d7fd2edcb564afcfb6f363687d71027e94406
 		)
 );
 
