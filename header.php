@@ -47,6 +47,10 @@
 				           js.src = "//connect.facebook.net/en_US/all.js";
 				           d.getElementsByTagName('head')[0].appendChild(js);
 				        }(document));
+
+				        $.ajaxSetup({
+				        	cache: false
+				        });
 					</script>
 
 					<img id="fbPicture" /> <span class="name"></span><div class="fb-login-button" data-scope="user_about_me, user_education_history, user_hometown, user_location, email"></div>

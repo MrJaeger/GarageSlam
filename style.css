@@ -84,7 +84,14 @@ img#fbPicture {
 }
 
 .influence img {
-	width: 85px;
+	max-height: 80px;
+	max-width: 80px;
+}
+
+.innerImage{
+	width: 80px;
+	height: 80px;
+	text-align: center;
 }
 
 #slider ul, #slider ul li {
