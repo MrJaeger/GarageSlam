@@ -2,7 +2,7 @@
 
 session_start();
 if($_SESSION['logged_in']== 1) {
-	header("Location: ".$_SERVER['DOCUMENT_ROOT']."/home.php");
+	header("Location: ".$_SERVER['SERVER_NAME']."/home.php");
 }
 
 require_once("facebook.php");
@@ -14,7 +14,7 @@ $facebook = new Facebook(array(
 
 $params = array(
 scope => 'user_about_me, user_education_history, user_hometown, user_location, email',
-redirect_uri => $_SERVER['DOCUMENT_ROOT']."/home.php"
+redirect_uri => "http://".$_SERVER['SERVER_NAME']."/home.php"
 );
 
 $loginUrl = $facebook->getLoginUrl($params);
@@ -41,7 +41,7 @@ $loginUrl = $facebook->getLoginUrl($params);
 		<header>
 			<div class="wrapper">
 				<div id="login">
-					login goes here
+					<a href="<?= $loginUrl ?>">Login</a>
 				</div>
 				<h1><a href="/">GarageSlam</a></h1>
 			</div><!--/.wrapper-->
