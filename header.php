@@ -1,3 +1,26 @@
+<?
+
+session_start();
+if($_SESSION['logged_in']== 1) {
+	header("Location: ".$_SERVER['DOCUMENT_ROOT']."/home.php");
+}
+
+require_once("facebook.php");
+
+$facebook = new Facebook(array(
+  'appId'  => '283313805059550',
+  'secret' => '409b470d0d0e0f0478cfda13a4ae4cd3',
+));
+
+$params = array(
+scope => 'user_about_me, user_education_history, user_hometown, user_location, email',
+redirect_uri => $_SERVER['DOCUMENT_ROOT']."/home.php"
+);
+
+$loginUrl = $facebook->getLoginUrl($params);
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
