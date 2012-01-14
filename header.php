@@ -29,7 +29,19 @@
 				            oauth      : true,
 				          });
 				          FB.Event.subscribe('auth.login', function () {
-					          window.location = document.URL;
+				          	FB.api("/me", function(user) {
+  								$.ajax({
+					          		type: "GET",
+					          		url: "/api/setUser.php",
+					          		data: "id=" + user.id +
+					          			"&fname=" + user.first_name +
+					          			"&lname=" + user.last_name +
+					          			"&location=" + user.location.name +
+					          			"&school=" + user.education[user.education.length - 1].school.name,
+				          			async: false,
+					          	});	
+  							});
+					        //window.location = document.URL;
 					      });
 				          FB.getLoginStatus(function(response) {
   							if (response.status === 'connected') {
@@ -37,6 +49,7 @@
 							    $("#fbPicture").attr("src", "https://graph.facebook.com/" + response.authResponse.userID + "/picture");
   								FB.api("/me", function(user) {
   									$(".name").html("<a href='/profile.php'>" + user.name + "</a>");
+  									$(".location").html(user.location.name);
   								});
   							}
   						  });

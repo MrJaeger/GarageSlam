@@ -36,7 +36,7 @@
 				Print
 			</div><!--/.actions-->
 			<img class="profile" src="/images/profile-default.png" />
-			<h1>Man Johnson <span class="location">Freehold, NJ</span></h1>
+			<h1><span class="name"></span> <span class="location"></span></h1>
 			<span class="small"><h6>Genres:</h6> <span class="grey">post-rock &bull; jazz &bull; hip hop</span></span>
 			<hr />
 			<span class="small"><h6>Instruments:</h6> <span class="grey">guitar &bull; turntables</span></span>

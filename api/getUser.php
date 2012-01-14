@@ -6,7 +6,7 @@ $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhal
 
 $user = mysql_fetch_assoc(
 		mysql_query(
-			"select * from `users` where `tid` = '" . $id . "'";
+			"select * from `users` where `id` = '" . $id . "'";
 		)
 );
 
