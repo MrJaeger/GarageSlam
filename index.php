@@ -1,4 +1,4 @@
-<? require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); ?>
+<? require_once($_SERVER['SERVER_NAME'] . "/header.php"); ?>
 		<? 
 			$loggedIn = false;
 			if ($loggedIn) {
@@ -38,4 +38,4 @@
 				<p>Once you find the perfect arrangement, GarageSlam makes it easy to get in touch. Send messages and become friends, and in no time you'll be practicing for your next show.</p>
 			</div><!--/.block-third-->
 		</div>
-<? require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.php"); ?>
+<? require_once($_SERVER['SERVER_NAME'] . "/footer.php"); ?>
