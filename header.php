@@ -9,6 +9,8 @@
 		<link rel="stylesheet" type="text/css" href="/style.css" />
 		<link rel="stylesheet" type="text/css" href="/fonts/Freesans.css">
 
+		<link rel="icon" type="image/ico" href="/favicon.ico">
+
 		<!--Scripts-->
 		<script type="text/javascript" src="/include/jquery-1.7.1.min.js"></script>
 	</head>

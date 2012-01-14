@@ -121,11 +121,12 @@ hr {
 	float: right;
 }
 
-.project {
+.project, .show {
 	clear: both;
-	margin: 0px 0px 10px 0px;
+	margin: 20px 0px 20px 0px;
 	line-height: 1;
 }
+
 .project .text {
 	display: table-cell;
 }
@@ -161,11 +162,18 @@ hr {
 	clear: both;
 }
 
-.block {
+.block-third, .block-half {
 	float: left;
-	width: 280px;
-	margin: 0px 20px 0px 0px;
+	margin: 0px 20px 20px 0px;
 	padding: 0px;
+}
+
+.block-third {
+	width: 280px;
+}
+
+.block-half {
+	width: 430px;
 }
 
 /* Forms */

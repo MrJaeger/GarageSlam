@@ -20,13 +20,13 @@
 			<hr />
 			<span class="small"><h6>Looking for a band</h6></span>
 			<div class="clear"></div>
-			<div class="block">
+			<div class="block-third">
 				<h2>Projects</h2>
 				<h3>Current</h3>
 				<div class="project">
 					<img src="/images/album-art.png" />
 					<div class="text">
-						<h4>Coolest Band Like Ever</h4>
+						<h4><a href="/project.php">Coolest Band Like Ever</a></h4>
 						<div class="small grey">post-rock</div>
 						<div><span class="small members">4 members</span></div>
 					</div><!--/.text-->
@@ -48,7 +48,7 @@
 					</div><!--/.text-->
 				</div><!--/.project-->
 			</div>
-			<div class="block">
+			<div class="block-third">
 				<h2>Influences</h2>
 				<div class="influence first">
 					<img src="/images/album-art.png" />
@@ -71,7 +71,7 @@
 					Some guys
 				</div><!--/.influence-->
 			</div>
-			<div class="block">
+			<div class="block-third">
 				<h2>Demos</h2>
 				<script type="text/javascript">
 					SC.oEmbed("http://soundcloud.com/matas/tracks", {auto_play: false}, function(oembed){
