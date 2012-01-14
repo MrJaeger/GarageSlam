@@ -12,7 +12,6 @@ $user = mysqli_fetch_assoc(
 
 $user['influences'] = array();
 $iQuery = "SELECT * from influences WHERE influenceid = $id";
-die($iQuery);
 $iResult = mysqli_query($mySQLConnection, $iQuery);
 while($row = mysqli_fetch_assoc($iResult)) {
 	$user['influences'][] = $row['bandName'];
