@@ -178,7 +178,7 @@ hr {
 
 /* Forms */
 
-header form#login {
+header #login {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;

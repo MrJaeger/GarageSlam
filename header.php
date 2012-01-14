@@ -17,9 +17,9 @@
 	<body>
 		<header>
 			<div class="wrapper">
-				<form id="login">
+				<div id="login">
 					login goes here
-				</form>
+				</div>
 				<h1><a href="/">GarageSlam</a></h1>
 			</div><!--/.wrapper-->
 		</header>
