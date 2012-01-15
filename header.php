@@ -57,7 +57,7 @@
 				          			success: function(data) {
 				          				currentUser = data;
 				          				$(document).trigger("currentUserLoaded");
-						          		$(".currentName").html("<a href='/profile.php'>" + currentUser.first + " " + currentUser.last + "</a>");
+						          		$(".currentName").html("<a href='/profile.php?id=" + currentUser.id + "'>" + currentUser.first + " " + currentUser.last + "</a>");
   									}
   								});
   							}
