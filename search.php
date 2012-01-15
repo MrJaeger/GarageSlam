@@ -31,22 +31,28 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$("ul#filters li button").click(function() {
+		$("button.active").removeClass("active");
+		$(this).addClass("active");
+	});
 });
 </script>
-<div class="wrapper" id="search-left">
-	<h1>Find People to Jam With</h1>
-	<ul id="filters">
-		<li><button name="instrument">Instrument</button></li>
-		<li><button name="name">Name</button></li>
-		<li><button name="location">Location</button></li>
-		<li><button name="genre">Genre</button></li>
-	</ul>
-	<form id="search-form" class="inline">
-		<label>Search</label>
-		<input id="search-box" type="text"></input>
-	</form>
-	<button class="inline" id="search-button">Jam!</button>
-	<div id="search-results"></div>
+<div class="wrapper">
+	<div class="search-center">
+		<h1>Musician Search</h1>
+		<br>
+		<form id="search-form" class="search">
+			<input id="search-box" type="text"></input>
+			<button id="search-button">Search</button>
+		</form>
+		<ul id="filters">
+			<li>Search by: <button name="name" class="active">Name</button></li>
+			<li><button name="location">Location</button></li>
+			<li><button name="instrument">Instrument</button></li>
+			<li><button name="genre">Genre</button></li>
+		</ul>
+		<div id="search-results"></div>
+	</div>
 </div>
 
 <? require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.php"); ?>
