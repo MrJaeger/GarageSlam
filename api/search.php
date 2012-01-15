@@ -38,7 +38,7 @@ switch($filter) {
 
 $back = array();
 foreach($result as $r) {
-	$back[] = file_get_contents("http://garageslam.slamwhale.com/api/getUser.php?id=".$r['id']);
+	$back[] = json_decode(file_get_contents("http://garageslam.slamwhale.com/api/getUser.php?id=".$r['id']));
 }
 
 echo json_encode($back);
