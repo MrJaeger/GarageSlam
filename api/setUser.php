@@ -1,8 +1,8 @@
 <?
 
-$id = mysqli_real_escape_string($_GET['id']); $first = mysqli_real_escape_string($_GET['fname']); $last = mysqli_real_escape_string($_GET['lname']); $location = mysqli_real_escape_string($_GET['location']); $school = mysqli_real_escape_string($_GET['school']); $soundcloud = mysqli_real_escape_string($_GET['soundcloud']);
-
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
+
+$id = mysqli_real_escape_string($mySQLConnection, $_GET['id']); $first = mysqli_real_escape_string($mySQLConnection, $_GET['fname']); $last = mysqli_real_escape_string($mySQLConnection, $_GET['lname']); $location = mysqli_real_escape_string($mySQLConnection, $_GET['location']); $school = mysqli_real_escape_string($mySQLConnection, $_GET['school']); $soundcloud = mysqli_real_escape_string($mySQLConnection, $_GET['soundcloud']);
 
 $checkQ = "SELECT id FROM users WHERE id='".$id."'";
 
