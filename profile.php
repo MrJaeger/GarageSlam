@@ -22,6 +22,7 @@
 	      			success: function(data) {
 	      				profileUser = data;
 		          		$(".profileName").html("<a href='/profile.php'>" + profileUser.first + " " + profileUser.last + "</a>");
+		          		$("img#profile").attr("src", "https://graph.facebook.com/" + profileUser.id + "/picture?type=large");
 		          		$(".location").html(profileUser.location);
 		          		var i;
 		          		for (i = 0; i < profileUser.influences.length; i++) {
@@ -171,7 +172,7 @@
 				Message<br>
 				Print
 			</div><!--/.actions-->
-			<img class="profile" src="/images/profile-default.png" />
+			<img class="profile" id="profile" src="/images/profile-default.png" />
 			<h1><span class="profileName"></span> <span class="location"></span></h1>
 			<span class="small"><h6>Genres:</h6> <span class="grey" id="genres"></span></span>
 			<hr />
