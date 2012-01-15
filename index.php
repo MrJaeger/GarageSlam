@@ -1,9 +1,6 @@
 <? require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); ?>
 		<? 
-			$loggedIn = false;
-			if ($loggedIn) {
-				// redirect to some kind of feed
-			}
+			
 		?>
 		<script type="text/javascript" src="/include/easySlider1.7.js"></script>
 		<script type="text/javascript">
@@ -14,6 +11,9 @@
 					controlsShow: false,
 					pause: 5000
 				});
+			});
+			$(document).bind("currentUserLoaded", function() {
+				window.location = "/profile.php?id=" + currentUser.id;
 			});
 		</script>
 		<div class="wrapper">

@@ -42,7 +42,7 @@
 				          			async: false,
 					          	});	
   							});
-					        //window.location = document.URL;
+					        window.location = document.URL;
 					      });
 				          FB.getLoginStatus(function(response) {
   							if (response.status === 'connected') {
@@ -56,6 +56,7 @@
 				          			dataType: "json",
 				          			success: function(data) {
 				          				currentUser = data;
+				          				$(document).trigger("currentUserLoaded");
 						          		$(".currentName").html("<a href='/profile.php'>" + currentUser.first + " " + currentUser.last + "</a>");
   									}
   								});

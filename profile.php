@@ -33,11 +33,23 @@
 								async: false,
 								success: function(data) {
 									$("#influences").append("<div class=\"influence\" id=\"" + i + "\"><div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + profileUser.influences[i] + "</div><!--/.influence-->");
-									if (i%3 == 0) {
+									if (i % 3 == 0) {
 										$(".influence#" + i).addClass("first");
 									}
 								}
 							});
+						}
+						for (var i = 0; i < profileUser.genres.length; i++) {
+							$("#genres").append(profileUser.genres[i]);
+							if (i != profileUser.genres.length - 1) {
+								$("#genres").append(" &bull; ");
+							}
+						}
+						for (var i = 0; i < profileUser.instruments.length; i++) {
+							$("#instruments").append(profileUser.instruments[i]);
+							if (i != profileUser.instruments.length - 1) {
+								$("#instruments").append(" &bull; ");
+							}
 						}
 					}
 				});
@@ -51,9 +63,9 @@
 			</div><!--/.actions-->
 			<img class="profile" src="/images/profile-default.png" />
 			<h1><span class="profileName"></span> <span class="location"></span></h1>
-			<span class="small"><h6>Genres:</h6> <span class="grey">post-rock &bull; jazz &bull; hip hop</span></span>
+			<span class="small"><h6>Genres:</h6> <span class="grey" id="genres"></span></span>
 			<hr />
-			<span class="small"><h6>Instruments:</h6> <span class="grey">guitar &bull; turntables</span></span>
+			<span class="small"><h6>Instruments:</h6> <span class="grey" id="instruments"></span></span>
 			<hr />
 			<span class="small"><h6>Looking for a band</h6></span>
 			<div class="clear"></div>
