@@ -3,6 +3,8 @@
 	
 	$id = $_GET['id'];
 ?>
+		
+		<!--script type="text/javascript" src="/include/autocomplete.js"></script-->
 		<script src="http://connect.soundcloud.com/sdk.js" type="text/JavaScript"></script>
 		<script type="text/JavaScript">
 			SC.initialize({
@@ -40,16 +42,56 @@
 								}
 							});
 						}
-						$("#influences").append("<div class=\"influence new\" id=\"" + i + "\"><div class=\"innerImage\">+</div>Add an influence</div>")
+						$("#influences").append("<div class=\"influence new\" id=\"" + profileUser.influences.length + "\"><div class=\"innerImage\"><a href=\"#\">+</a></div><div id=\"add\">Add an influence</div></div>");
+						$(".influence.new a").live("click", function() {
+							$(".influence.new #add").html("<form id=\"addInfluence\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addInfluenceInput\" name=\"addInfluenceInput\" value=\"Add an influence\"></input></form>");
+							$(".influence.new #addInfluenceInput").focus();
+							$(".influence.new #addInfluenceInput").blur(function() {
+								if ($(this).attr("value") === "Add an influence") {
+									$(".influence.new #add").html("Add an influence");
+								}
+							});
+							$("form#addInfluence").submit(function() {
+								$.ajax({	
+					          		type: "GET",
+					          		url: "/api/setInfluence.php",
+					          		data: "id=" + currentUser.id +
+					          			"&name=" + $("input#addInfluenceInput").val(),
+				          			dataType: "json",
+				          			success: function(data) {
+				          				profileUser.influences[profileUser.influences.length] = $("input#addInfluenceInput").val();
+				          				$.ajax({
+											type: "GET",
+											url: "http://developer.echonest.com/api/v4/artist/images",
+											data: "api_key=LKUB0RKYGDIVF956W" + 
+												"&name=" + profileUser.influences[profileUser.influences.length - 1] +
+												"&format=json" +
+												"&results=1",
+											dataType: "json",
+											async: false,
+											success: function(data) {
+						          				$(".influence.new").html("<div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + profileUser.influences[profileUser.influences.length - 1] + "</div>");
+						          				$(".influence.new").removeClass("new");
+						          				$("#influences").append("<div class=\"influence new\" id=\"" + profileUser.influences.length + "\"><div class=\"innerImage\"><a href=\"#\">+</a></div><div id=\"add\">Add an influence</div></div>");
+						          			}
+						          		});	
+  									}
+  								});
+  								return false;
+							});
+						});
 						if (profileUser.influences.length % 3 == 0) {
 							$(".influence#" + profileUser.influences.length).addClass("first");
 						}
+
 						for (i = 0; i < profileUser.genres.length; i++) {
-							$("#genres").append(profileUser.genres[i]);
+							$("#genres").append("<span class=\"genre\" id=" + i + ">" + profileUser.genres[i] + "</span>");
 							if (i != profileUser.genres.length - 1) {
 								$("#genres").append(" &bull; ");
 							}
 						}
+						$("#genres").append("<span class=\"genre new\" id=" + profileUser.genres.length + ">Add a genre</span>");
+
 						for (i = 0; i < profileUser.instruments.length; i++) {
 							$("#instruments").append(profileUser.instruments[i]);
 							if (i != profileUser.instruments.length - 1) {

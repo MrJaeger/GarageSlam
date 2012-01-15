@@ -63,6 +63,11 @@ header h1 {
 
 img {
 	background: #dddddd;
+	box-shadow: 0px 3px 5px #333;
+}
+
+header img {
+	box-shadow: none;
 }
 
 img.profile {
@@ -96,13 +101,25 @@ img#fbPicture {
 	margin-bottom: 10px;
 }
 
+.influence.new .innerImage, .influence.new .innerImage a {
+	color: #99ee00;
+}
+
 .influence.new .innerImage {
 	background: #66cc00;
-	color: #99ee00;
 	box-shadow: 0px 3px 5px #333;
 	text-shadow: 0px 3px 3px #333;
 	font-size: 50px;
 	font-weight: bold;
+}
+
+.influence.new .innerImage a {
+	display: block;
+}
+
+.influence.new form input {
+	width: 75px;
+	font-size: x-small;
 }
 
 #slider ul, #slider ul li {
@@ -115,6 +132,22 @@ img#fbPicture {
 	width: 900px;
 	height: 300px;
 	text-align: right;
+}
+
+ul.ui-autocomplete, ul.ui-autocomplete li {
+	font-family: FreeSans, sans-serif;
+	font-size: x-small;
+}
+
+ul.ui-autocomplete {
+	width: 80px;
+	background: #ffffff;
+	border: 1px solid #dddddd;
+	border-radius: 0px;
+}
+
+ul.ui-autocomplete li {
+	margin: 20px 0px;
 }
 
 hr {
