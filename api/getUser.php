@@ -17,6 +17,13 @@ while($row = mysqli_fetch_assoc($iResult)) {
 	$user['influences'][] = $row['bandName'];
 }
 
+$user['genres'] = array();
+$gQuery = "SELECT * from genres WHERE genreid = $id";
+$gResult = mysqli_query($mySQLConnection, $gQuery);
+while($row = mysqli_fetch_assoc($gResult)) {
+	$user['genres'][] = $row['genre'];
+}
+
 echo json_encode($user);
 
 mysqli_close($mySQLConnection);
