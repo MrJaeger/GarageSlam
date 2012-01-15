@@ -30,7 +30,7 @@ switch($filter) {
 		}
 		break;
 	case 'genre':
-		$sQuery = "SELECT * from users JOIN genres ON users.id = genres.genreid WHERE genres.genre LIKE '$term%";
+		$sQuery = "SELECT * from users JOIN genres ON users.id = genres.genreid WHERE genres.genre LIKE '$term%'";
 		$res = mysqli_query($mySQLConnection, $sQuery);
 		while($row = mysqli_fetch_assoc($res)) {
 			$result[] = $row;
