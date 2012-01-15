@@ -24,6 +24,20 @@ while($row = mysqli_fetch_assoc($gResult)) {
 	$user['genres'][] = $row['genre'];
 }
 
+$user['instruments'] = array();
+$inQuery = "SELECT * from instruments WHERE instrumentid = $id";
+$inResult = mysqli_query($mySQLConnection, $inQuery);
+while($row = mysqli_fetch_assoc($inResult)) {
+	$user['instruments'][] = $row['instrument'];
+}
+
+$user['projects'] = array();
+$pQuery = "SELECT * from projects JOIN usersProjects ON projects.projectid = usersProjects.pid WHERE uid = $id";
+$pResult = mysqli_query($mySQLConnection, $pQuery);
+while($row = mysqli_fetch_assoc($pResult)) {
+	$user['projects'][] = $row;
+}
+
 echo json_encode($user);
 
 mysqli_close($mySQLConnection);
