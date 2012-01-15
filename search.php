@@ -1,22 +1,34 @@
 <? require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); ?>
 <script type="text/javascript">
 var filter = "instrument";
-console.log(filter);
 $(document).ready(function() { 
 	$('#filters li button').click(function() {
 		filter = $(this).attr('name');
 	});
+	$('#search-form').submit(function () {
+		$('#search-button').click();
+		return false;
+	});
 	$('#search-button').click(function() {
-		var term = $('#search-box').html();
+		$('#search-results').html("");
+		var term = $('#search-box').val();
 		$.ajax({
 			type: "GET",
-			url: "/api/search.php",
-			data: "term=" + term +
-				"&filter=" + filter,
+			url: "http://garageslam.slamwhale.com/api/search.php",
+			data: "term=" + encodeURIComponent(term) + "&filter=" + encodeURIComponent(filter),
 			async: false,
 			dataType: "json",
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(errorThrown);
+				console.log(textStatus);
+				console.log(jqXHR);
+			},
 			success: function(data) {
-				
+				//data = JSON.parse(data);
+				for(var i = 0; i<data.length; i++) {
+					person = JSON.parse(data[i]);
+					$('#search-results').append("<div class='result'><h2>"+person.first+" "+person.last+"</h2></div>")
+				}
 			}
 		});
 	});
@@ -30,7 +42,7 @@ $(document).ready(function() {
 		<li><button name="location">Location</button></li>
 		<li><button name="genre">Genre</button></li>
 	</ul>
-	<form class="inline">
+	<form id="search-form" class="inline">
 		<label>Search</label>
 		<input id="search-box" type="text"></input>
 	</form>

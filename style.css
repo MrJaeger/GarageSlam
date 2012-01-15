@@ -122,6 +122,10 @@ img#fbPicture {
 	font-size: x-small;
 }
 
+form#addGenre, form#addInstrument {
+	display: inline-block;
+}
+
 #slider ul, #slider ul li {
 	list-style: none;
 	margin: 0px;
@@ -252,4 +256,9 @@ ul#filters {
 
 .inline {
 	display: inline;
+}
+
+.result {
+	border: 1px solid black;
+	background: gray;
 }
