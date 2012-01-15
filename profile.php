@@ -21,6 +21,7 @@
 	      			dataType: "json",
 	      			success: function(data) {
 	      				profileUser = data;
+	      				$(document).trigger("profileUserLoaded");
 		          		$(".profileName").html("<a href='/profile.php?id=" + profileUser.id + "'>" + profileUser.first + " " + profileUser.last + "</a>");
 		          		$("img#profile").attr("src", "https://graph.facebook.com/" + profileUser.id + "/picture?type=large");
 		          		$(".location").html(profileUser.location);
@@ -210,11 +211,13 @@
 			<div class="block-third" id="Demos">
 				<h2>Demos</h2>
 				<script type="text/javascript">
+					$(document).live("profileUserLoaded", function() {
 						if (profileUser.soundcloud) {
 							SC.oEmbed("http://soundcloud.com/" + profileUser.soundcloud + "/tracks", {auto_play: false}, function(oembed){
 								$("#soundcloud").html(oembed.html);
 							});
 						}
+					});
 				</script>
 				<div id="soundcloud"></div>
 			</div>
