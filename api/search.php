@@ -1,6 +1,7 @@
 <?
 
-$term = rawurldecode($_GET['term']); $filter = rawurldecode($_GET['filter']);
+$term = mysqli_real_escape_string(rawurldecode($_GET['term'])); $filter = mysqli_real_escape_string(rawurldecode($_GET['filter']));
+
 
 $result = array();
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
