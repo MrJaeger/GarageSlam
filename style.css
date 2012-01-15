@@ -239,3 +239,17 @@ header #login {
 	bottom: 5px;
 	right: 0px;
 }
+
+/* Andrew's Terrible, Terrible CSS */
+ul#filters {
+	padding: 0px;
+}
+
+#filters li {
+	display: inline;
+	list-style-type: none;
+}
+
+.inline {
+	display: inline;
+}

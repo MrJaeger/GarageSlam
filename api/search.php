@@ -29,9 +29,20 @@ switch($filter) {
 			$result[] = $row;
 		}
 		break;
+	case 'genre':
+		$sQuery = "SELECT * from users JOIN genres ON users.id = genres.genreid WHERE genres.genre LIKE 'term%";
+		$res = mysqli_query($mySQLConnection, $sQuery);
+		while($row = mysqli_fetch_assoc($res)) {
+			$result[] = $row;
+		}
+		break;
 }
 
-echo json_encode($result);
+foreach($result as $r) {
+	$back[] = get_raw_file_contents()
+}
+
+echo json_encode($back);
 
 mysqli_close($mySQLConnection);
 ?>
