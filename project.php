@@ -7,16 +7,16 @@
 			});
 		</script>
 		<div class="wrapper">
-			<div class="actions">
+			<!--div class="actions">
 				Ask to Join<br>
 				Message<br>
 				Print
 			</div><!--/.actions-->
-			<img class="profile" src="/images/profile-default.png" />
+			<!--img class="profile" src="/images/profile-default.png" /-->
 			<h1>Coolest Band Like Ever <span class="location">Freehold, NJ</span></h1>
 			<span class="small"><h6>Genre:</h6> <span class="grey">post-rock </span></span>
 			<hr />
-			<span class="small"><h6>Members:</h6> <span class="grey"><a href="/profile.php">Man Johnson</a> &bull; Some other guys</span></span>
+			<span class="small"><h6>Members:</h6> <span class="grey"><a href="/profile.php?id=816980152">Dan Mundy</a> &bull; Some other guys</span></span>
 			<div class="clear"></div>
 			<div class="block-half">
 				<h2>Shows</h2>
