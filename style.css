@@ -86,12 +86,23 @@ img#fbPicture {
 .influence img {
 	max-height: 80px;
 	max-width: 80px;
+	box-shadow: 0px 3px 5px #333;
 }
 
-.innerImage{
+.innerImage {
 	width: 80px;
 	height: 80px;
 	text-align: center;
+	margin-bottom: 10px;
+}
+
+.influence.new .innerImage {
+	background: #66cc00;
+	color: #99ee00;
+	box-shadow: 0px 3px 5px #333;
+	text-shadow: 0px 3px 3px #333;
+	font-size: 50px;
+	font-weight: bold;
 }
 
 #slider ul, #slider ul li {

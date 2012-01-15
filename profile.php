@@ -21,7 +21,8 @@
 	      				profileUser = data;
 		          		$(".profileName").html("<a href='/profile.php'>" + profileUser.first + " " + profileUser.last + "</a>");
 		          		$(".location").html(profileUser.location);
-		          		for (var i = 0; i < profileUser.influences.length; i++) {
+		          		var i;
+		          		for (i = 0; i < profileUser.influences.length; i++) {
 							$.ajax({
 								type: "GET",
 								url: "http://developer.echonest.com/api/v4/artist/images",
@@ -39,13 +40,17 @@
 								}
 							});
 						}
-						for (var i = 0; i < profileUser.genres.length; i++) {
+						$("#influences").append("<div class=\"influence new\" id=\"" + i + "\"><div class=\"innerImage\">+</div>Add an influence</div>")
+						if (profileUser.influences.length % 3 == 0) {
+							$(".influence#" + profileUser.influences.length).addClass("first");
+						}
+						for (i = 0; i < profileUser.genres.length; i++) {
 							$("#genres").append(profileUser.genres[i]);
 							if (i != profileUser.genres.length - 1) {
 								$("#genres").append(" &bull; ");
 							}
 						}
-						for (var i = 0; i < profileUser.instruments.length; i++) {
+						for (i = 0; i < profileUser.instruments.length; i++) {
 							$("#instruments").append(profileUser.instruments[i]);
 							if (i != profileUser.instruments.length - 1) {
 								$("#instruments").append(" &bull; ");
@@ -71,25 +76,21 @@
 			<div class="clear"></div>
 			<div class="block-third">
 				<h2>Projects</h2>
-				<h3>Current</h3>
 				<div class="project">
-					<img src="/images/album-art.png" />
 					<div class="text">
 						<h4><a href="/project.php">Coolest Band Like Ever</a></h4>
 						<div class="small grey">post-rock</div>
 						<div><span class="small members">4 members</span></div>
 					</div><!--/.text-->
 				</div><!--/.project-->
-				<h3>Past</h3>
 				<div class="project">
 					<div class="text">
-						<h4>Worst Band I Was Ever In. Not even a photo.</h4>
+						<h4>Worst Band I Was Ever In</h4>
 						<div class="small grey">country</div>
 						<div><span class="small members">2 members</span></div>
 					</div><!--/.text-->
 				</div><!--/.project-->
 				<div class="project">
-					<img src="/images/album-art.png" />
 					<div class="text">
 						<h4>Somewhat Alright Solo Project</h4>
 						<div class="small grey">folk</div>
@@ -99,25 +100,6 @@
 			</div>
 			<div class="block-third" id="influences">
 				<h2>Influences</h2>
-				<!--div class="influence first">
-					<img src="/images/album-art.png" />
-					Radiohead
-				</div><!--/.influence-->
-				<!--div class="influence">
-					<img src="/images/album-art.png" />
-					Explosions in the Sky
-				</div><!--/.influence-->
-				<!--div class="influence">
-					<img src="/images/album-art.png" />
-					J Dilla
-				</div><!--/.influence-->
-				<!--div class="influence first">
-					<img src="/images/album-art.png" />
-				</div><!--/.influence-->
-				<!--div class="influence">
-					<img src="/images/album-art.png" />
-					Some guys
-				</div><!--/.influence-->
 			</div>
 			<div class="block-third">
 				<h2>Demos</h2>
