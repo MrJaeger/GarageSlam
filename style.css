@@ -276,6 +276,7 @@ form#search-form input[type=text] {
 	border: 1px solid black;
 	background: gray;
 }
+<<<<<<< HEAD
 
 /* Forms */
 
@@ -284,3 +285,5 @@ header #login {
 	bottom: 5px;
 	right: 0px;
 }
+=======
+>>>>>>> 1c6274f7313163a85b310eb9c2a53b939d6b1010

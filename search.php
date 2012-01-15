@@ -24,7 +24,6 @@ $(document).ready(function() {
 				console.log(jqXHR);
 			},
 			success: function(data) {
-				//data = JSON.parse(data);
 				for(var i = 0; i<data.length; i++) {
 					person = JSON.parse(data[i]);
 					$('#search-results').append("<div class='result'><h2>"+person.first+" "+person.last+"</h2></div>")
