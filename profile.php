@@ -210,13 +210,11 @@
 			<div class="block-third" id="Demos">
 				<h2>Demos</h2>
 				<script type="text/javascript">
-					$(document).live("currentUserLoaded", function() {
 						if (profileUser.soundcloud) {
 							SC.oEmbed("http://soundcloud.com/" + profileUser.soundcloud + "/tracks", {auto_play: false}, function(oembed){
 								$("#soundcloud").html(oembed.html);
 							});
 						}
-					});
 				</script>
 				<div id="soundcloud"></div>
 			</div>
