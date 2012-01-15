@@ -34,6 +34,13 @@ switch($filter) {
 			$result[] = $row;
 		}
 		break;
+	case 'influence':
+		$sQuery = "SELECT * from users JOIN influences ON users.id = influences.influenceid WHERE influences.influence LIKE '$term%'";
+		$res = mysqli_query($mySQLConnection, $sQuery);
+		while($row = mysqli_fetch_assoc($res)) {
+			$result[] = $row;
+		}
+		break;
 }
 
 $back = array();
