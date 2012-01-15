@@ -211,7 +211,7 @@
 				<h2>Demos</h2>
 				<script type="text/javascript">
 					$(document).live("currentUserLoaded", function() {
-						if (currentUser.soundcloud) {
+						if (profileUser.soundcloud) {
 							SC.oEmbed("http://soundcloud.com/" + profileUser.soundcloud + "/tracks", {auto_play: false}, function(oembed){
 								$("#soundcloud").html(oembed.html);
 							});
