@@ -76,7 +76,7 @@
 				        });
 					</script>
 
-					<img id="fbPicture" /> <span class="currentName"></span><div class="fb-login-button" data-scope="user_about_me, user_education_history, user_hometown, user_location, email"></div>
+					<img id="fbPicture" /> <span class="currentName"></span><div class="fb-login-button inline" data-scope="user_about_me, user_education_history, user_hometown, user_location, email"></div>
 				</div>
 				<h1><a href="/">GarageSlam</a></h1><span class="small">alpha</span>
 			</div><!--/.wrapper-->

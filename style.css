@@ -302,6 +302,10 @@ div.result {
 	display: table-cell;
 }
 
+.inline {
+	display: inline-block;
+}
+
 /* Forms */
 
 header #login {
