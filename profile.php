@@ -44,10 +44,10 @@
 						}
 						$("#influences").append("<div class=\"influence new\" id=\"" + profileUser.influences.length + "\"><div class=\"innerImage\"><a href=\"#\">+</a></div><div id=\"add\">Add an influence</div></div>");
 						$(".influence.new a").live("click", function() {
-							$(".influence.new #add").html("<form id=\"addInfluence\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addInfluenceInput\" name=\"addInfluenceInput\" value=\"Add an influence\"></input></form>");
+							$(".influence.new #add").html("<form id=\"addInfluence\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addInfluenceInput\" name=\"addInfluenceInput\" value=\"\"></input></form>");
 							$(".influence.new #addInfluenceInput").focus();
 							$(".influence.new #addInfluenceInput").live("blur" , function() {
-								if ($(this).attr("value") === "Add an influence") {
+								if ($(this).attr("value") === "") {
 									$(".influence.new #add").html("Add an influence");
 								}
 							});
@@ -90,13 +90,13 @@
 								$("#genres").append(" &bull; ");
 							}
 						}
-						$("#genres").append("<span class=\"genre new\" id=" + profileUser.genres.length + "><a href=\"#\">Add a genre</a></span>");
+						$("#genres").append(" &bull; <span class=\"genre new\" id=" + profileUser.genres.length + "><span id=\"add\"><a href=\"#\">Add a genre</a></span></span>");
 						$(".genre.new a").live("click", function() {
-							$(".genre.new #add").html("<form id=\"addGenre\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addGenreInput\" name=\"addGenreInput\" value=\"Add a genre\"></input></form>");
+							$(".genre.new #add").html("<form id=\"addGenre\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addGenreInput\" name=\"addGenreInput\" value=\"\"></input></form>");
 							$(".genre.new #addGenreInput").focus();
 							$(".genre.new #addGenreInput").live("blur" , function() {
-								if ($(this).attr("value") === "Add a genre") {
-									$(".genre.new #add").html("Add a genre");
+								if ($(this).attr("value") === "") {
+									$(".genre.new #add").html("<a href=\"#\">Add a genre</a>");
 								}
 							});
 							$("form#addGenre").submit(function() {
@@ -104,25 +104,13 @@
 					          		type: "GET",
 					          		url: "/api/setGenre.php",
 					          		data: "id=" + currentUser.id +
-					          			"&name=" + $("input#addGenreInput").val(),
+					          			"&genre=" + $("input#addGenreInput").val(),
 				          			dataType: "json",
 				          			success: function(data) {
 				          				profileUser.genres[profileUser.genres.length] = $("input#addGenreInput").val();
-				          				$.ajax({
-											type: "GET",
-											url: "http://developer.echonest.com/api/v4/artist/images",
-											data: "api_key=LKUB0RKYGDIVF956W" + 
-												"&name=" + profileUser.genres[profileUser.genres.length - 1] +
-												"&format=json" +
-												"&results=1",
-											dataType: "json",
-											async: false,
-											success: function(data) {
-						          				$(".genre.new").html("<div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + profileUser.genres[profileUser.genres.length - 1] + "</div>");
-						          				$(".genre.new").removeClass("new");
-						          				$("#genres").append("<div class=\"genre new\" id=\"" + profileUser.genres.length + "\"><div class=\"innerImage\"><a href=\"#\">+</a></div><div id=\"add\">Add a genre</div></div>");
-						          			}
-						          		});	
+				          				$(".genre.new").html("<span class=\"genre\" id=" + i + ">" + profileUser.genres[profileUser.genres.length - 1] + "</span>");
+				          				$(".genre.new").removeClass("new");
+				          				$("#genres").append(" &bull; <span class=\"genre new\" id=" + profileUser.genres.length + "><span id=\"add\"><a href=\"#\">Add a genre</a></span></span>");
   									}
   								});
   								return false;
@@ -135,13 +123,13 @@
 								$("#instruments").append(" &bull; ");
 							}
 						}
-						$("#instrument").append("<span class=\"instrument new\" id=" + profileUser.instrument.length + "><a href=\"#\">Add an instrument</a></span>");
+						$("#instruments").append(" &bull; <span class=\"instrument new\" id=" + profileUser.instruments.length + "><span id=\"add\"><a href=\"#\">Add an instrument</a></span></span>");
 						$(".instrument.new a").live("click", function() {
-							$(".instrument.new #add").html("<form id=\"addInstrument\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addInstrumentInput\" name=\"addInstrumentInput\" value=\"Add an instrument\"></input></form>");
+							$(".instrument.new #add").html("<form id=\"addInstrument\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addInstrumentInput\" name=\"addInstrumentInput\" value=\"\"></input></form>");
 							$(".instrument.new #addInstrumentInput").focus();
 							$(".instrument.new #addInstrumentInput").live("blur" , function() {
-								if ($(this).attr("value") === "Add an instrument") {
-									$(".instrument.new #add").html("Add an instrument");
+								if ($(this).attr("value") === "") {
+									$(".instrument.new #add").html("<a href=\"#\">Add an instrument</a>");
 								}
 							});
 							$("form#addInstrument").submit(function() {
@@ -149,25 +137,13 @@
 					          		type: "GET",
 					          		url: "/api/setInstrument.php",
 					          		data: "id=" + currentUser.id +
-					          			"&name=" + $("input#addInstrumentInput").val(),
+					          			"&instrument=" + $("input#addInstrumentInput").val(),
 				          			dataType: "json",
 				          			success: function(data) {
-				          				profileUser.instrument[profileUser.instrument.length] = $("input#addInstrumentInput").val();
-				          				$.ajax({
-											type: "GET",
-											url: "http://developer.echonest.com/api/v4/artist/images",
-											data: "api_key=LKUB0RKYGDIVF956W" + 
-												"&name=" + profileUser.instrument[profileUser.instrument.length - 1] +
-												"&format=json" +
-												"&results=1",
-											dataType: "json",
-											async: false,
-											success: function(data) {
-						          				$(".instrument.new").html("<div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + profileUser.instrument[profileUser.instrument.length - 1] + "</div>");
-						          				$(".instrument.new").removeClass("new");
-						          				$("#instrument").append("<div class=\"instrument new\" id=\"" + profileUser.instrument.length + "\"><div class=\"innerImage\"><a href=\"#\">+</a></div><div id=\"add\">Add an instrument</div></div>");
-						          			}
-						          		});	
+				          				profileUser.instruments[profileUser.instruments.length] = $("input#addInstrumentInput").val();
+				          				$(".instrument.new").html("<span class=\"instrument\" id=" + i + ">" + profileUser.instruments[profileUser.instruments.length - 1] + "</span>");
+				          				$(".instrument.new").removeClass("new");
+				          				$("#instruments").append(" &bull; <span class=\"instrument new\" id=" + profileUser.instruments.length + "><span id=\"add\"><a href=\"#\">Add an instrument</a></span></span>");
   									}
   								});
   								return false;
