@@ -2,7 +2,7 @@
 
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
 
-$id = $mySQLConnection, $_GET['id'];
+$id = $_GET['id'];
 
 $project = mysqli_fetch_assoc(
 		mysqli_query(

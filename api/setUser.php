@@ -2,7 +2,7 @@
 
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
 
-$id = $mySQLConnection, $_GET['id']; $first = $mySQLConnection, $_GET['fname']; $last = $mySQLConnection, $_GET['lname']; $location = $mySQLConnection, $_GET['location']; $school = $mySQLConnection, $_GET['school']; $soundcloud = $mySQLConnection, $_GET['soundcloud'];
+$id = $_GET['id']; $first = $_GET['fname']; $last = $_GET['lname']; $location = $_GET['location']; $school = $_GET['school']; $soundcloud = $_GET['soundcloud'];
 
 $checkQ = "SELECT id FROM users WHERE id='".$id."'";
 
