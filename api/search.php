@@ -1,6 +1,6 @@
 <?
 
-$term = $_GET['term']; $filter = $_GET['filter'];
+$term = rawurldecode($_GET['term']); $filter = rawurldecode($_GET['filter']);
 
 $result = array();
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
@@ -19,12 +19,12 @@ switch($filter) {
 		$result = getNearby($mySQLConnection, $term);
 		break;
 	case 'name':
-		$sQuery = "SELECT * from users";
-		$names = explode($term, ' ');
+		$sQuery = "SELECT * from users WHERE";
+		$names = explode(" ", $term);
 		foreach($names as $name) {
-			$sQuery .= " WHERE first LIKE '$term%' OR last LIKE '$term%'";	
+			$sQuery .= " first LIKE '$name%' OR last LIKE '$name%' OR";	
 		}
-		$res = mysqli_query($mySQLConnection, $sQuery);
+		$res = mysqli_query($mySQLConnection, substr($sQuery, 0, strlen($sQuery)-2));
 		while($row = mysqli_fetch_assoc($res)) {
 			$result[] = $row;
 		}
@@ -38,8 +38,9 @@ switch($filter) {
 		break;
 }
 
+$back = array();
 foreach($result as $r) {
-	$back[] = get_raw_file_contents()
+	$back[] = file_get_contents("http://garageslam.slamwhale.com/api/getUser.php?id=".$r['id']);
 }
 
 echo json_encode($back);

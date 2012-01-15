@@ -257,3 +257,8 @@ ul#filters {
 .inline {
 	display: inline;
 }
+
+.result {
+	border: 1px solid black;
+	background: gray;
+}

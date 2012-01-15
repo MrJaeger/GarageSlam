@@ -1,22 +1,28 @@
 <? require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); ?>
 <script type="text/javascript">
 var filter = "instrument";
-console.log(filter);
 $(document).ready(function() { 
 	$('#filters li button').click(function() {
 		filter = $(this).attr('name');
 	});
 	$('#search-button').click(function() {
-		var term = $('#search-box').html();
+		var term = $('#search-box').val();
 		$.ajax({
 			type: "GET",
-			url: "/api/search.php",
-			data: "term=" + term +
-				"&filter=" + filter,
+			url: "http://garageslam.slamwhale.com/api/search.php",
+			data: "term=" + encodeURIComponent(term) + "&filter=" + encodeURIComponent(filter),
 			async: false,
 			dataType: "json",
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(errorThrown);
+				console.log(textStatus);
+				console.log(jqXHR);
+			},
 			success: function(data) {
-				
+				console.log(data);
+				for(var i = 0; i<data.length; i++) {
+					$('#search-results').append("<div class='result'><h2>"+data[i].first+" "+data[i].last+"</h2></div>")
+				}
 			}
 		});
 	});
