@@ -167,7 +167,7 @@
 			});
 		</script>
 		<div class="wrapper">
-			<div class="actions">
+			<!--div class="actions">
 				Friend<br>
 				Message<br>
 				Print
