@@ -2,7 +2,7 @@
 
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
 
-$id = mysqli_real_escape_string($mySQLConnection, $_GET['id']); $first = mysqli_real_escape_string($mySQLConnection, $_GET['fname']); $last = mysqli_real_escape_string($mySQLConnection, $_GET['lname']); $location = mysqli_real_escape_string($mySQLConnection, $_GET['location']); $school = mysqli_real_escape_string($mySQLConnection, $_GET['school']); $soundcloud = mysqli_real_escape_string($mySQLConnection, $_GET['soundcloud']);
+$id = $mySQLConnection, $_GET['id']; $first = $mySQLConnection, $_GET['fname']; $last = $mySQLConnection, $_GET['lname']; $location = $mySQLConnection, $_GET['location']; $school = $mySQLConnection, $_GET['school']; $soundcloud = $mySQLConnection, $_GET['soundcloud'];
 
 $checkQ = "SELECT id FROM users WHERE id='".$id."'";
 
