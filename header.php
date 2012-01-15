@@ -40,7 +40,7 @@
 					          			"&lname=" + user.last_name +
 					          			"&location=" + user.location.name +
 					          			"&school=" + user.education[user.education.length - 1].school.name,
-				          			async: false,
+				          			async: false
 					          	});	
   							});
 					        window.location = document.URL;
