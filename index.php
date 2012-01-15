@@ -12,7 +12,7 @@
 					pause: 5000
 				});
 			});
-			$(document).bind("currentUserLoaded", function() {
+			$(document).live("currentUserLoaded", function() {
 				window.location = "/profile.php?id=" + currentUser.id;
 			});
 		</script>
