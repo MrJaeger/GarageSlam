@@ -47,7 +47,7 @@
 			<div class="block-half">
 				<h2>Demos</h2>
 				<script type="text/javascript">
-					SC.oEmbed("http://soundcloud.com/matas/tracks", {auto_play: false}, function(oembed){
+					SC.oEmbed("http://soundcloud.com/maddecent/tracks", {auto_play: false}, function(oembed){
 						$("#soundcloud").html(oembed.html);
 					});
 				</script>

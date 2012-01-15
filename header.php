@@ -19,6 +19,7 @@
 			<div class="wrapper">
 				<div id="login">
 					<div id="fb-root"></div>
+					<a href="/search.php">Search</a>&nbsp;&nbsp;&nbsp;&nbsp;
 					<script type="text/javascript">
 						var currentUser;
 						window.fbAsyncInit = function() {

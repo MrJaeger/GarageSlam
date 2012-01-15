@@ -21,9 +21,24 @@ $(document).ready(function() {
 				console.log(jqXHR);
 			},
 			success: function(data) {
+				$('#search-results').append("<h1>Results</h1>");
 				for(var i = 0; i<data.length; i++) {
-					person = data[i];
-					$('#search-results').append("<div class='result'><h2>"+person.first+" "+person.last+"</h2></div>")
+					var genres = "";
+					for (var j = 0; j < data[i].genres.length; j++) {
+						genres += "<span class='genre' id='genre" + j + "'>" + data[i].genres[j] + "</span>";
+						if (j != data[i].genres.length - 1) {
+							genres += " &bull; ";
+						}
+					}
+					var instruments = "";
+					for (var j = 0; j < data[i].instruments.length; j++) {
+						instruments += "<span class='instrument' id='instrument" + j + "'>" + data[i].instruments[j] + "</span>";
+						if (j != data[i].instruments.length - 1) {
+							instruments += " &bull; ";
+						}
+					}
+					$('#search-results').append("<div class='result' id='result" + i + "'><img class='result' /><div class='text'><h3><a href='/profile.php?id=" + data[i].id + "'>"+data[i].first+" "+data[i].last+"</a> <span class='location'>" + data[i].location + "</span></h3><span class='small'><h6>Genres:</h6> <span class='grey'>" + genres + "</span></span><hr><span class='small'><h6>Instruments:</h6> <span class='grey'>" + instruments + "</span></span></div></div>");
+					$(".result#result" + i + " img.result").attr("src", "https://graph.facebook.com/" + data[i].id + "/picture");
 				}
 			}
 		});

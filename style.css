@@ -288,9 +288,18 @@ form#search-form input[type=text] {
 	text-align: left;
 }
 
-.result {
-	border: 1px solid black;
-	background: gray;
+div.result {
+	clear: both;
+	margin: 20px 0px;
+}
+
+.result img {
+	float: left;
+	margin-right: 10px;
+}
+
+.text {
+	display: table-cell;
 }
 
 /* Forms */

@@ -21,7 +21,7 @@
 	      			dataType: "json",
 	      			success: function(data) {
 	      				profileUser = data;
-		          		$(".profileName").html("<a href='/profile.php'>" + profileUser.first + " " + profileUser.last + "</a>");
+		          		$(".profileName").html("<a href='/profile.php?id=" + profileUser.id + "'>" + profileUser.first + " " + profileUser.last + "</a>");
 		          		$("img#profile").attr("src", "https://graph.facebook.com/" + profileUser.id + "/picture?type=large");
 		          		$(".location").html(profileUser.location);
 		          		var i;
