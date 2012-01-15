@@ -1,4 +1,8 @@
-<? require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); ?>
+<?
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); 
+	
+	$id = $_GET['id'];
+?>
 		<script src="http://connect.soundcloud.com/sdk.js" type="text/JavaScript"></script>
 		<script type="text/JavaScript">
 			SC.initialize({
@@ -6,26 +10,37 @@
 				redirect_uri: "http://example.com/callback.html",
 			});
 
-			$(document).bind("userLoaded", function() {
-				console.log("currentUser failing");
-				for (var i = 0; i < currentUser.influences.length; i++) {
-					$.ajax({
-						type: "GET",
-						url: "http://developer.echonest.com/api/v4/artist/images",
-						data: "api_key=LKUB0RKYGDIVF956W" + 
-							"&name=" + currentUser.influences[i] +
-							"&format=json" +
-							"&results=1",
-						dataType: "json",
-						async: false,
-						success: function(data) {
-							$("#influences").append("<div class=\"influence\" id=\"" + i + "\"><div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + currentUser.influences[i] + "</div><!--/.influence-->");
-							if (i%3 == 0) {
-								$(".influence#" + i).addClass("first");
-							}
+			$(document).ready(function() {
+				$.ajax({
+	          		type: "GET",
+	          		url: "/api/getUser.php",
+	          		data: "id=<? echo $id ?>",
+	      			async: false,
+	      			dataType: "json",
+	      			success: function(data) {
+	      				profileUser = data;
+		          		$(".profileName").html("<a href='/profile.php'>" + profileUser.first + " " + profileUser.last + "</a>");
+		          		$(".location").html(profileUser.location);
+		          		for (var i = 0; i < profileUser.influences.length; i++) {
+							$.ajax({
+								type: "GET",
+								url: "http://developer.echonest.com/api/v4/artist/images",
+								data: "api_key=LKUB0RKYGDIVF956W" + 
+									"&name=" + profileUser.influences[i] +
+									"&format=json" +
+									"&results=1",
+								dataType: "json",
+								async: false,
+								success: function(data) {
+									$("#influences").append("<div class=\"influence\" id=\"" + i + "\"><div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + profileUser.influences[i] + "</div><!--/.influence-->");
+									if (i%3 == 0) {
+										$(".influence#" + i).addClass("first");
+									}
+								}
+							});
 						}
-					});
-				}
+					}
+				});
 			});
 		</script>
 		<div class="wrapper">
@@ -35,7 +50,7 @@
 				Print
 			</div><!--/.actions-->
 			<img class="profile" src="/images/profile-default.png" />
-			<h1><span class="name"></span> <span class="location"></span></h1>
+			<h1><span class="profileName"></span> <span class="location"></span></h1>
 			<span class="small"><h6>Genres:</h6> <span class="grey">post-rock &bull; jazz &bull; hip hop</span></span>
 			<hr />
 			<span class="small"><h6>Instruments:</h6> <span class="grey">guitar &bull; turntables</span></span>

@@ -56,10 +56,7 @@
 				          			dataType: "json",
 				          			success: function(data) {
 				          				currentUser = data;
-				          				$(document).trigger("userLoaded");
-				          				console.log("currentUser initialized");
-						          		$(".name").html("<a href='/profile.php'>" + currentUser.first + " " + currentUser.last + "</a>");
-	  									$(".location").html(currentUser.location);
+						          		$(".currentName").html("<a href='/profile.php'>" + currentUser.first + " " + currentUser.last + "</a>");
   									}
   								});
   							}
@@ -77,7 +74,7 @@
 				        });
 					</script>
 
-					<img id="fbPicture" /> <span class="name"></span><div class="fb-login-button" data-scope="user_about_me, user_education_history, user_hometown, user_location, email"></div>
+					<img id="fbPicture" /> <span class="currentName"></span><div class="fb-login-button" data-scope="user_about_me, user_education_history, user_hometown, user_location, email"></div>
 				</div>
 				<h1><a href="/">GarageSlam</a></h1>
 			</div><!--/.wrapper-->
