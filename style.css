@@ -272,11 +272,26 @@ form#search-form input[type=text] {
 	width: 500px;
 }
 
+#search-button {
+	background: #ffffff url('/images/search-button.png');
+	border: 0px;
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	border-radius: 100px;
+	vertical-align: text-top;
+}
+
+#search-results {
+	text-align: left;
+}
+
 .result {
 	border: 1px solid black;
 	background: gray;
 }
-<<<<<<< HEAD
 
 /* Forms */
 
@@ -285,5 +300,3 @@ header #login {
 	bottom: 5px;
 	right: 0px;
 }
-=======
->>>>>>> 1c6274f7313163a85b310eb9c2a53b939d6b1010
