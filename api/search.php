@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?
 
 $term = rawurldecode($_GET['term']); $filter = rawurldecode($_GET['filter']);
