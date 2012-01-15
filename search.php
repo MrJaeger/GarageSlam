@@ -5,7 +5,12 @@ $(document).ready(function() {
 	$('#filters li button').click(function() {
 		filter = $(this).attr('name');
 	});
+	$('#search-form').submit(function () {
+		$('#search-button').click();
+		return false;
+	});
 	$('#search-button').click(function() {
+		$('#search-results').html("");
 		var term = $('#search-box').val();
 		$.ajax({
 			type: "GET",
@@ -19,9 +24,10 @@ $(document).ready(function() {
 				console.log(jqXHR);
 			},
 			success: function(data) {
-				console.log(data);
+				//data = JSON.parse(data);
 				for(var i = 0; i<data.length; i++) {
-					$('#search-results').append("<div class='result'><h2>"+data[i].first+" "+data[i].last+"</h2></div>")
+					person = JSON.parse(data[i]);
+					$('#search-results').append("<div class='result'><h2>"+person.first+" "+person.last+"</h2></div>")
 				}
 			}
 		});
@@ -36,7 +42,7 @@ $(document).ready(function() {
 		<li><button name="location">Location</button></li>
 		<li><button name="genre">Genre</button></li>
 	</ul>
-	<form class="inline">
+	<form id="search-form" class="inline">
 		<label>Search</label>
 		<input id="search-box" type="text"></input>
 	</form>
