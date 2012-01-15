@@ -212,7 +212,7 @@
 				<script type="text/javascript">
 					$(document).live("currentUserLoaded", function() {
 						if (currentUser.soundcloud) {
-							SC.oEmbed("http://soundcloud.com/" + currentUser.soundcloud + "/tracks", {auto_play: false}, function(oembed){
+							SC.oEmbed("http://soundcloud.com/" + profileUser.soundcloud + "/tracks", {auto_play: false}, function(oembed){
 								$("#soundcloud").html(oembed.html);
 							});
 						}
