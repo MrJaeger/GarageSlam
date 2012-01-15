@@ -26,15 +26,15 @@
 				</ul>
 			</div><!--/#slider-->
 			<div class="block-third">
-				<h2 style="display: inline;">Find</h2> <img src="/images/search.png" />
+				<h2 style="display: inline;">Find</h2> <img class="landing" src="/images/search.png" />
 				<p>Locate musicians near you. Tell GarageSlam where you live or where you go to school, and we'll find musicians looking to collaborate right in your area. Based on what kinds of collaborations you're looking for, we'll find the perfect match.</p>
 			</div><!--/.block-third-->
 			<div class="block-third">
-				<h2 style="display: inline;">Share</h2> <img src="/images/speaker.png" />
+				<h2 style="display: inline;">Share</h2> <img class="landing" src="/images/speaker.png" />
 				<p>With GarageSlam, you can create a sleek, professional profile in just a few clicks. Tell everyone what kind of music you play, who your influences are, and what projects you've been involved in. Connect to <a href="http://www.soundcloud.com/">SoundCloud</a> and showcase your demos.</p>
 			</div><!--/.block-third-->
 			<div class="block-third">
-				<h2 style="display: inline;">Connect</h2> <img src="/images/collab.png" />
+				<h2 style="display: inline;">Connect</h2> <img class="landing" src="/images/collab.png" />
 				<p>Once you find the perfect arrangement, GarageSlam makes it easy to get in touch. Send messages and become friends, and in no time you'll be practicing for your next show.</p>
 			</div><!--/.block-third-->
 		</div>

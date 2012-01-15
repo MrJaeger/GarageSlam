@@ -218,11 +218,15 @@
 			<div class="block-third" id="influences">
 				<h2>Influences</h2>
 			</div>
-			<div class="block-third">
+			<div class="block-third" id="Demos">
 				<h2>Demos</h2>
 				<script type="text/javascript">
-					SC.oEmbed("http://soundcloud.com/exchgr/tracks", {auto_play: false}, function(oembed){
-						$("#soundcloud").html(oembed.html);
+					$(document).live("currentUserLoaded", function() {
+						if (currentUser.soundcloud) {
+							SC.oEmbed("http://soundcloud.com/" + currentUser.soundcloud + "/tracks", {auto_play: false}, function(oembed){
+								$("#soundcloud").html(oembed.html);
+							});
+						}
 					});
 				</script>
 				<div id="soundcloud"></div>
