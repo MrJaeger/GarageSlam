@@ -46,7 +46,7 @@
 						$(".influence.new a").live("click", function() {
 							$(".influence.new #add").html("<form id=\"addInfluence\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addInfluenceInput\" name=\"addInfluenceInput\" value=\"Add an influence\"></input></form>");
 							$(".influence.new #addInfluenceInput").focus();
-							$(".influence.new #addInfluenceInput").blur(function() {
+							$(".influence.new #addInfluenceInput").live("blur" , function() {
 								if ($(this).attr("value") === "Add an influence") {
 									$(".influence.new #add").html("Add an influence");
 								}
@@ -90,14 +90,89 @@
 								$("#genres").append(" &bull; ");
 							}
 						}
-						$("#genres").append("<span class=\"genre new\" id=" + profileUser.genres.length + ">Add a genre</span>");
+						$("#genres").append("<span class=\"genre new\" id=" + profileUser.genres.length + "><a href=\"#\">Add a genre</a></span>");
+						$(".genre.new a").live("click", function() {
+							$(".genre.new #add").html("<form id=\"addGenre\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addGenreInput\" name=\"addGenreInput\" value=\"Add a genre\"></input></form>");
+							$(".genre.new #addGenreInput").focus();
+							$(".genre.new #addGenreInput").live("blur" , function() {
+								if ($(this).attr("value") === "Add a genre") {
+									$(".genre.new #add").html("Add a genre");
+								}
+							});
+							$("form#addGenre").submit(function() {
+								$.ajax({	
+					          		type: "GET",
+					          		url: "/api/setGenre.php",
+					          		data: "id=" + currentUser.id +
+					          			"&name=" + $("input#addGenreInput").val(),
+				          			dataType: "json",
+				          			success: function(data) {
+				          				profileUser.genres[profileUser.genres.length] = $("input#addGenreInput").val();
+				          				$.ajax({
+											type: "GET",
+											url: "http://developer.echonest.com/api/v4/artist/images",
+											data: "api_key=LKUB0RKYGDIVF956W" + 
+												"&name=" + profileUser.genres[profileUser.genres.length - 1] +
+												"&format=json" +
+												"&results=1",
+											dataType: "json",
+											async: false,
+											success: function(data) {
+						          				$(".genre.new").html("<div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + profileUser.genres[profileUser.genres.length - 1] + "</div>");
+						          				$(".genre.new").removeClass("new");
+						          				$("#genres").append("<div class=\"genre new\" id=\"" + profileUser.genres.length + "\"><div class=\"innerImage\"><a href=\"#\">+</a></div><div id=\"add\">Add a genre</div></div>");
+						          			}
+						          		});	
+  									}
+  								});
+  								return false;
+							});
+						});
 
 						for (i = 0; i < profileUser.instruments.length; i++) {
-							$("#instruments").append(profileUser.instruments[i]);
+							$("#instruments").append("<span class=\"instrument\" id=" + i + ">" + profileUser.instruments[i] + "</span>");
 							if (i != profileUser.instruments.length - 1) {
 								$("#instruments").append(" &bull; ");
 							}
 						}
+						$("#instrument").append("<span class=\"instrument new\" id=" + profileUser.instrument.length + "><a href=\"#\">Add an instrument</a></span>");
+						$(".instrument.new a").live("click", function() {
+							$(".instrument.new #add").html("<form id=\"addInstrument\" action=\"\"><input type=\"text\" class=\"grey\" id=\"addInstrumentInput\" name=\"addInstrumentInput\" value=\"Add an instrument\"></input></form>");
+							$(".instrument.new #addInstrumentInput").focus();
+							$(".instrument.new #addInstrumentInput").live("blur" , function() {
+								if ($(this).attr("value") === "Add an instrument") {
+									$(".instrument.new #add").html("Add an instrument");
+								}
+							});
+							$("form#addInstrument").submit(function() {
+								$.ajax({	
+					          		type: "GET",
+					          		url: "/api/setInstrument.php",
+					          		data: "id=" + currentUser.id +
+					          			"&name=" + $("input#addInstrumentInput").val(),
+				          			dataType: "json",
+				          			success: function(data) {
+				          				profileUser.instrument[profileUser.instrument.length] = $("input#addInstrumentInput").val();
+				          				$.ajax({
+											type: "GET",
+											url: "http://developer.echonest.com/api/v4/artist/images",
+											data: "api_key=LKUB0RKYGDIVF956W" + 
+												"&name=" + profileUser.instrument[profileUser.instrument.length - 1] +
+												"&format=json" +
+												"&results=1",
+											dataType: "json",
+											async: false,
+											success: function(data) {
+						          				$(".instrument.new").html("<div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + profileUser.instrument[profileUser.instrument.length - 1] + "</div>");
+						          				$(".instrument.new").removeClass("new");
+						          				$("#instrument").append("<div class=\"instrument new\" id=\"" + profileUser.instrument.length + "\"><div class=\"innerImage\"><a href=\"#\">+</a></div><div id=\"add\">Add an instrument</div></div>");
+						          			}
+						          		});	
+  									}
+  								});
+  								return false;
+							});
+						});
 					}
 				});
 			});
