@@ -6,21 +6,20 @@
 				redirect_uri: "http://example.com/callback.html",
 			});
 
-			var influences = Array("Radiohead", "Explosions in the Sky", "J Dilla", "The Submarines", "Sterolab"); // Loaded from MySQL later
-
-			$(document).ready(function() {
-				for (var i = 0; i < influences.length; i++) {
+			$(document).bind("userLoaded", function() {
+				console.log("currentUser failing");
+				for (var i = 0; i < currentUser.influences.length; i++) {
 					$.ajax({
 						type: "GET",
 						url: "http://developer.echonest.com/api/v4/artist/images",
 						data: "api_key=LKUB0RKYGDIVF956W" + 
-							"&name=" + influences[i] +
+							"&name=" + currentUser.influences[i] +
 							"&format=json" +
 							"&results=1",
 						dataType: "json",
 						async: false,
 						success: function(data) {
-							$("#influences").append("<div class=\"influence\" id=\"" + i + "\"><div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + influences[i] + "</div><!--/.influence-->");
+							$("#influences").append("<div class=\"influence\" id=\"" + i + "\"><div class=\"innerImage\"><img src=\"" + data.response.images[0].url +"\" /></div>" + currentUser.influences[i] + "</div><!--/.influence-->");
 							if (i%3 == 0) {
 								$(".influence#" + i).addClass("first");
 							}

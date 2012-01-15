@@ -56,6 +56,8 @@
 				          			dataType: "json",
 				          			success: function(data) {
 				          				currentUser = data;
+				          				$(document).trigger("userLoaded");
+				          				console.log("currentUser initialized");
 						          		$(".name").html("<a href='/profile.php'>" + currentUser.first + " " + currentUser.last + "</a>");
 	  									$(".location").html(currentUser.location);
   									}
