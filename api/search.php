@@ -1,5 +1,4 @@
 <?
-
 $term = $_GET['term']; $filter = $_GET['filter'];
 
 $result = array();

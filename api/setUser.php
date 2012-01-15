@@ -1,6 +1,6 @@
 <?
 
-$id = $_GET['id']; $first = $_GET['fname']; $last = $_GET['lname']; $location = $_GET['location']; $school = $_GET['school']; $soundcloud = $_GET['soundcloud'];
+$id = mysqli_real_escape_string($_GET['id']); $first = mysqli_real_escape_string($_GET['fname']); $last = mysqli_real_escape_string($_GET['lname']); $location = mysqli_real_escape_string($_GET['location']); $school = mysqli_real_escape_string($_GET['school']); $soundcloud = mysqli_real_escape_string($_GET['soundcloud']);
 
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
 

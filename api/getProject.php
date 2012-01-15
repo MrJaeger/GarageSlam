@@ -1,6 +1,6 @@
 <?
 
-$id = $_GET['id'];
+$id = mysqli_real_escape_string($_GET['id']);
 
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
 
