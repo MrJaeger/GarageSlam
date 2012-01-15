@@ -2,7 +2,7 @@
 $result = array();
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
 
-$term = rawurldecode($mySQLConnection, $_GET['term']); $filter = rawurldecode($mySQLConnection, $_GET['filter']);
+$term = rawurldecode($_GET['term']); $filter = rawurldecode($_GET['filter']);
 
 switch($filter) {
 	case 'instrument':
