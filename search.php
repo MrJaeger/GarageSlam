@@ -1,21 +1,18 @@
-<? require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); ?>
+<?
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/header.php"); 
+
+
+?>
 <script type="text/javascript">
-var filter = "instrument";
-$(document).ready(function() { 
-	$('#filters li button').click(function() {
-		filter = $(this).attr('name');
-	});
-	$('#search-form').submit(function () {
-		$('#search-button').click();
-		return false;
-	});
-	$('#search-button').click(function() {
-		$('#search-results').html("");
+var filter = "name";
+$(document).ready(function() {
+	$('form#search-form').submit(function () {
 		var term = $('#search-box').val();
+		$("#search-results").html("");
 		$.ajax({
 			type: "GET",
-			url: "http://garageslam.slamwhale.com/api/search.php",
-			data: "term=" + encodeURIComponent(term) + "&filter=" + encodeURIComponent(filter),
+			url: "/api/search.php",
+			data: "term=" + term + "&filter=" + filter,
 			async: false,
 			dataType: "json",
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -25,15 +22,17 @@ $(document).ready(function() {
 			},
 			success: function(data) {
 				for(var i = 0; i<data.length; i++) {
-					person = JSON.parse(data[i]);
+					person = data[i];
 					$('#search-results').append("<div class='result'><h2>"+person.first+" "+person.last+"</h2></div>")
 				}
 			}
 		});
+		return false;
 	});
 	$("ul#filters li button").click(function() {
 		$("button.active").removeClass("active");
 		$(this).addClass("active");
+		filter = $(this).attr('name');
 	});
 });
 </script>
@@ -41,9 +40,9 @@ $(document).ready(function() {
 	<div class="search-center">
 		<h1>Musician Search</h1>
 		<br>
-		<form id="search-form" class="search">
+		<form id="search-form" class="search" action="#">
 			<input id="search-box" type="text"></input>
-			<button id="search-button">Search</button>
+			<input type="submit" id="search-button" value=""></input>
 		</form>
 		<ul id="filters">
 			<li>Search by: <button name="name" class="active">Name</button></li>

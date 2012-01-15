@@ -1,5 +1,4 @@
 <?
-
 $result = array();
 $mySQLConnection = mysqli_connect("mysql.slamwhale.com", "slamwhale", "cloudwhale00", "garageslam");
 
