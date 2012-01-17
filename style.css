@@ -9,6 +9,7 @@ body {
 }
 
 .wrapper {
+	clear: both;
 	position: relative;
 	width: 900px;
 	margin: 0px auto;
@@ -22,7 +23,7 @@ header {
 
 p {
 	text-align: justify;
-	font-size: small;
+	/*font-size: small;*/
 	margin: 5px 0px;
 }
 
@@ -65,6 +66,10 @@ header h1 {
 img {
 	background: #dddddd;
 	box-shadow: 0px 3px 5px #333;
+}
+
+img.icon {
+	box-shadow: none !important;
 }
 
 header img, img.landing {
@@ -156,6 +161,11 @@ ul.ui-autocomplete li {
 }
 
 ul#filters {
+	padding: 0px;
+}
+
+ul.no-bullet {
+	list-style: none;
 	padding: 0px;
 }
 
@@ -304,6 +314,15 @@ div.result {
 
 .inline {
 	display: inline-block;
+}
+
+.footer {
+	clear: both;
+	margin: 10px 0px 0px 0px;
+	padding: 5px 0px 0px 0px;
+	border-top: 1px solid #dddddd;
+	text-align: left;
+	font-size: x-small;
 }
 
 /* Forms */
